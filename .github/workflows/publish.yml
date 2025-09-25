@@ -16,17 +16,17 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/Leafshi01/publish-packages/game
+          images: ghcr.io/Leafshi1/publish-packages/game
           tags: type=sha
       - name: Login to CHAR
         uses: docker/login-action@v3
         with: 
           registry: ghcr.io
-          username: ${{github.repository_owner}}
-          password: ${{secrets.GITHUB_TOKEN}}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build container
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{steps.meta.outputs.tags}}
+          tags: ${{ steps.meta.outputs.tags }}
